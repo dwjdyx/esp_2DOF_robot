@@ -1,0 +1,8 @@
+
+		hip		knee
+RF		16		18
+LF		12		15
+RB		17		19
+LB		13		26
+
+举例：16 = GPIO_NUM_16

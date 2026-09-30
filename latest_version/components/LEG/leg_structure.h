@@ -1,0 +1,55 @@
+#ifndef _LEG_STRUCTURE_H_
+#define _LEG_STRUCTURE_H_
+
+#include "servo.h"
+
+// ================ 腿部数据结构体 ==================
+typedef enum
+{
+    RF,                //右前腿
+    LF,                //左前腿
+    RB,                //右后腿
+    LB,                //左后腿
+    LEG_MAX_NUM
+}leg_id_t;
+
+typedef struct
+{
+    float x;
+    float y;
+    float z;
+}leg_pos_t;             //腿部坐标
+
+typedef struct
+{
+    float theta1;       //臀部舵机
+    float theta2;       //膝盖舵机
+    float theta3;       //末端固定常量值
+}leg_joint_angle_t;     //关节角度
+
+typedef struct 
+{
+    leg_pos_t target_pos;                   // 目标坐标
+    leg_joint_angle_t last_joint_angle;     // 上次关节角度
+    leg_joint_angle_t joint_angle;          // 关节角度
+    bool leg_test_initialized;              // 用于忽略第一次检验角度变化
+    servo_angle_t servo_angle;
+}leg_t;             //腿部结构体
+
+typedef struct
+{
+    servo_id_t hip;         // 对应到舵机
+    servo_id_t knee;
+
+    float hip_offset;       // 角度偏移
+    float knee_offset;
+
+    float hip_dir;          // 系数
+    float knee_dir;
+
+} leg_config_t;         //腿和舵机映射配置参数
+
+extern const leg_config_t leg_config[LEG_MAX_NUM];
+extern leg_t leg_array[LEG_MAX_NUM];        //腿部数组
+
+#endif

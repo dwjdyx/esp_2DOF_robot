@@ -1,0 +1,64 @@
+#include "leg_structure.h"
+
+leg_t leg_array[LEG_MAX_NUM] = {
+    [RF] = { 
+        .target_pos = {40, 0, -53},
+        .last_joint_angle = {0.0f, 0.0f, 0.0f},
+        .leg_test_initialized = false 
+    },
+    [LF] = { 
+        .target_pos = {40, 0, -53},
+        .last_joint_angle = {0.0f, 0.0f, 0.0f},
+        .leg_test_initialized = false 
+    },
+    [RB] = { 
+        .target_pos = {28.28f, 28.28f, -53.0f},
+        .last_joint_angle = {0.0f, 0.0f, 0.0f},
+        .leg_test_initialized = false 
+    },
+    [LB] = { 
+        .target_pos = {28.28f, -28.28f, -53.0f},
+        .last_joint_angle = {0.0f, 0.0f, 0.0f},
+        .leg_test_initialized = false 
+    },
+};
+
+//映射表，根据实际情况修改offset和dir
+const leg_config_t leg_config[LEG_MAX_NUM] =
+{
+    [RF] = {
+        .hip = RF_HIP,
+        .knee = RF_KNEE,
+        .hip_offset = 90.0f,
+        .knee_offset = 90.0f,
+        .hip_dir = 1.0f,
+        .knee_dir = -1.0f
+    },
+
+    [LF] = {
+        .hip = LF_HIP,
+        .knee = LF_KNEE,
+        .hip_offset = 90.0f,
+        .knee_offset = 90.0f,
+        .hip_dir = 1.0f,
+        .knee_dir = 1.0f
+    },
+
+    [RB] = {
+        .hip = RB_HIP,
+        .knee = RB_KNEE,
+        .hip_offset = 90.0f,
+        .knee_offset = 90.0f,
+        .hip_dir = 1.0f,
+        .knee_dir = 1.0f
+    },
+
+    [LB] = {
+        .hip = LB_HIP,
+        .knee = LB_KNEE,
+        .hip_offset = 90.0f,
+        .knee_offset = 90.0f,
+        .hip_dir = 1.0f,
+        .knee_dir = -1.0f
+    }
+};
